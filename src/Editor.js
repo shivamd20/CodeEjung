@@ -13,24 +13,81 @@ import 'brace/ext/searchbox';
 
 var input,classname;
 
+var glotlanguages=[
+  "assembly", //
+ // "ats",
+  // "bash",
+  "c", //
+  "clojure",//
+  "cobol",//
+  "coffeescript",//
+  "cpp", //
+  "crystal",
+  "csharp",//
+  "d",//
+  "elixir", //
+  "elm",//
+  "erlang",//
+  "fsharp",
+  "go", //
+  "groovy",//
+  "haskell",//
+  "idris",
+  "java",//
+  "javascript",//
+  "julia", //
+  "kotlin", //
+  "lua", //
+  "mercury",
+  "nim",
+  "ocaml",//
+  "perl", //
+  "perl6", //
+  "php",//
+  "python",  //
+  "ruby",//
+  "rust",//
+  "scala",//
+  "swift",//
+  "typescript" //
+];
 
 const languages = [
     'javascript',
     'java',
     'python',
-    'xml',
+   // 'xml',
     'ruby',
-    'sass',
-    'markdown',
-    'mysql',
-    'json',
-    'html',
-    'handlebars',
+  //  'sass',
+  //  'markdown',
+  //  'mysql',
+   // 'json',
+  //  'html',
+  //  'handlebars',
     'golang',
     'csharp',
     'elixir',
     'typescript',
-    'css'
+   // 'css',
+    'c_cpp',
+    'assembly_x86',
+    'clojure',
+    'cobol',
+    'coffee',
+    'd',
+    'elm',
+    'erlang',
+    'groovy',
+    'haskell',
+    'julia',
+    'kotlin',
+    'lua',
+    'ocaml',
+    'perl',
+    'php',
+    'rust',
+    'scala',
+    'swift',    
   ]
 
   const themes = [
@@ -57,32 +114,219 @@ themes.forEach((theme) => {
     require(`brace/theme/${theme}`)
   })
 
+ 
+
 
 
 
 
 class Editor extends React.Component{
 
+  changeEditorLanguage(language){
+    
+        switch(language)
+        {
+
+   
+        case  "assembly": 
+        this.setState({
+          mode:"assembly_x86"
+        });
+
+        break; //
+          // "ats": break;
+           // "bash": break;
+           case  "c": 
+           this.setState({
+             mode:"c_cpp"
+           });
+           break; //
+           case "clojure":
+           this.setState({
+            mode:"clojure"
+          });
+           break;//
+           case "cobol":
+           this.setState({
+            mode:"cobol"
+          });
+           
+           break;//
+           case "coffeescript":
+           this.setState({
+            mode:"coffee"
+          });
+           break;//
+           case "cpp":
+           this.setState({
+            mode:"c_cpp"
+          });
+           break; //
+          //  case "crystal": 
+          //  this.setState({
+          //   mode:"c_cpp"
+          // });
+          //  break;
+           case "csharp": 
+           this.setState({
+            mode:"csharp"
+          });
+           break;//
+           case "d": 
+           this.setState({
+            mode:"d"
+          });
+           break;//
+           case "elixir": 
+           this.setState({
+            mode:"elixir"
+          });
+           break; //
+           case "elm": 
+           this.setState({
+            mode:"elm"
+          });
+           break;//
+           case "erlang":
+           this.setState({
+            mode:"erlang"
+          });
+           break;//
+          //  case "fsharp":
+          //  this.setState({
+          //   mode:"c_cpp"
+          // });
+          //  break;
+           case "go":
+           this.setState({
+            mode:"golang"
+          });
+           break; //
+           case "groovy":
+           this.setState({
+            mode:"groovy"
+          });
+           break;//
+           case "haskell":
+           this.setState({
+            mode:"haskell"
+          });
+           break;//
+          // case "idris": break;
+           case "java":
+           this.setState({
+            mode:"java"
+          });
+           break;//
+           case "javascript": 
+           this.setState({
+            mode:"javascript"
+          });
+           break;//
+           case "julia":
+           this.setState({
+            mode:"julia"
+          });
+           break; //
+           case "kotlin": 
+           this.setState({
+            mode:"kotlin"
+          });
+           break; //
+           case "lua":
+           this.setState({
+            mode:"lua"
+          });
+           break; //
+          // case "mercury": break;
+
+
+          // case "nim": break;
+           case "ocaml":
+           this.setState({
+            mode:"ocaml"
+          });
+           break;//
+           case "perl":
+           this.setState({
+            mode:"perl"
+          });
+           break; //
+           case "perl6": 
+           this.setState({
+            mode:"perl"
+          });
+           break; //
+           case "php": 
+           this.setState({
+            mode:"php"
+          });
+           break;//
+           case "python":
+           this.setState({
+            mode:"python"
+          });
+           break;  //
+           case "ruby": 
+           this.setState({
+            mode:"ruby"
+          });
+           break;//
+           case "rust": 
+           this.setState({
+            mode:"rust"
+          });
+           break;//
+           case "scala":
+           this.setState({
+            mode:"scala"
+          });
+           break;//
+           case "swift": 
+           this.setState({
+            mode:"swift"
+          });
+           break;//
+           case "typescript":
+           this.setState({
+            mode:"typescript"
+          });
+           break; //
+        
+
+      
+    
+        }
+    
+      }
+
     constructor(props){
         super(props);
+        
         this.state = {
             value: 'defaultValue',
             theme: 'monokai',
             mode: 'java',
-            enableBasicAutocompletion: false,
-            enableLiveAutocompletion: false,
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
             fontSize: 14,
             showGutter: true,
             showPrintMargin: true,
             highlightActiveLine: true,
             enableSnippets: false,
             showLineNumbers: true,
+            language:'java',
+            version:'latest',
+            filename:'Ramu.java',
+            input:'sgfd'
           };
           this.setTheme = this.setTheme.bind(this);
           this.setMode = this.setMode.bind(this);
           this.onChange = this.onChange.bind(this);
           this.setFontSize = this.setFontSize.bind(this);
           this.setBoolean = this.setBoolean.bind(this);
+
+
 
     }
 
@@ -152,16 +396,21 @@ class Editor extends React.Component{
               if (xhttp.readyState == 4 && xhttp.status == 200) {
             //   document.getElementById("output").innerHTML = this.responseText;
 
-            alert(xhttp.responseText);
-              }
+            alert(JSON.stringify(xhttp.responseText));
+             }
             };
             
   
-            xhttp.open("POST", "https://api.adoringly18.hasura-app.io/crjava", true);
+            xhttp.open("POST", "https://api.adoringly18.hasura-app.io/run", true);
             
               xhttp.setRequestHeader("input", this.state.input);
   
-              xhttp.setRequestHeader("classname",this.state.classname);
+              xhttp.setRequestHeader("filename",this.state.classname);
+
+              xhttp.setRequestHeader("version",this.state.version);
+
+              xhttp.setRequestHeader("language",this.state.language);  
+             
           
             xhttp.send(this.state.body);
           
@@ -182,16 +431,59 @@ class Editor extends React.Component{
      
 
     
-       <DropDownMenu value={this.state.mode} onChange={this.handleChange} style={style}>
+       <DropDownMenu value={this.state.theme} onChange={(event,index,value)=>{
+
+          this.setState(
+()=>{
+
+  return {
+              theme:value
+  }
+}
+          );
+
+       }} style={style}>
 
        {
-           languages.map((lang)=>(
+           themes.map((theme)=>(
+
+            <MenuItem value= {theme} primaryText={theme} />
+
+           ))
+       }
+        </DropDownMenu>
+
+        <DropDownMenu value={this.state.language} 
+
+
+        onChange={(event,index,value)=>{
+
+          this.setState(
+            
+            ()=>{
+              
+              return {
+
+              language:value
+
+          }});
+       //   this.state.language=value;
+
+         this.changeEditorLanguage(value);
+
+        }} 
+        style={style}>
+
+       {
+           glotlanguages.map((lang)=>(
 
             <MenuItem value= {lang} primaryText={lang} />
 
            ))
        }
         </DropDownMenu>
+
+      
 
         </div>
         
