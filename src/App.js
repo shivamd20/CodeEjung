@@ -8,8 +8,22 @@ import Editor from './Editor';
 import {Launcher} from './react-chat-window';
 import 'brace/mode/java';
 import 'brace/theme/github';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import FlatButton from 'material-ui/FlatButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
  
 var messageHistory=[];
+
+function handleClick() {
+  alert('onClick triggered on the title component');
+}
+
+const styles = {
+  title: {
+    cursor: 'pointer',
+  },
+};
 
 class App extends Component {
 
@@ -45,15 +59,22 @@ _sendMessage(text) {
 
   render() {
 
-    const style={
-      display: 'inline-block',
-      width: 'auto',
-    }
-
     return (
       <MuiThemeProvider>
       <div className="App">
-      <div style={style}>
+      <div style={{
+         display: 'inline-block',
+      width: 'auto',
+      }}>
+
+      <AppBar
+      zDepth={2}
+    title={<span style={styles.title}>Title</span>}
+    onTitleClick={handleClick}
+    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+    iconElementRight={<FlatButton label="Save" />}
+  />
+
       <Paper zDepth={1} style={{
         float:'left',
         width:'40vw',
