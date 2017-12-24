@@ -428,7 +428,7 @@ class Editor extends React.Component {
     };
 
 
-    xhttp.open("POST", "https://api.adoringly18.hasura-app.io/run", true);
+    xhttp.open("POST", "https://api.jadedly34.hasura-app.io/run", true);
 
     xhttp.setRequestHeader("input", this.state.input);
 
