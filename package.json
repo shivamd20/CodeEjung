@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cors-anywhere": "^0.4.1",
     "gh-pages": "^1.1.0",
     "glot-api": "^0.1.0",
     "material-ui": "^0.20.0",
